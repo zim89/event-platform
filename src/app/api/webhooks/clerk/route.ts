@@ -1,12 +1,12 @@
-import { WebhookEvent } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
 import { Webhook } from 'svix';
-import { clerkClient } from '@clerk/nextjs';
 import { headers } from 'next/headers';
+import { WebhookEvent } from '@clerk/nextjs/server';
 import { createUser, deleteUser, updateUser } from '@/lib/actions/user.actions';
+import { clerkClient } from '@clerk/nextjs';
+import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhooks
+  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       'svix-signature': svix_signature,
     }) as WebhookEvent;
   } catch (err) {
-    console.error('Error verifying webhooks:', err);
+    console.error('Error verifying webhook:', err);
     return new Response('Error occured', {
       status: 400,
     });
