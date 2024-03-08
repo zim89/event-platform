@@ -5,7 +5,6 @@ import Event from '@/lib/database/models/event.model';
 import User from '@/lib/database/models/user.model';
 import Category from '@/lib/database/models/category.model';
 import { handleError } from '@/lib/utils';
-
 import {
   CreateEventParams,
   UpdateEventParams,
@@ -118,6 +117,7 @@ export async function getAllEvents({
     };
 
     const skipAmount = (Number(page) - 1) * limit;
+
     const eventsQuery = Event.find(conditions)
       .sort({ createdAt: 'desc' })
       .skip(skipAmount)
