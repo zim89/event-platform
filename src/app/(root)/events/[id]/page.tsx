@@ -6,6 +6,7 @@ import {
   getRelatedEventsByCategory,
 } from '@/lib/actions/event.actions';
 import Collection from '@/components/shared/Collection';
+import CheckoutButton from '@/components/shared/CheckoutButton';
 
 const EventDetails = async ({
   params: { id },
@@ -54,7 +55,7 @@ const EventDetails = async ({
               </div>
             </div>
 
-            {/* TODO: Checkout button */}
+            <CheckoutButton event={event} />
 
             <div className='flex flex-col gap-5'>
               <div className='flex gap-2 md:gap-3'>
